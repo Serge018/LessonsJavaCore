@@ -3,7 +3,7 @@ package Lesson_01;
 
 public class Team implements ISportsman {
     String name;
-    private Player[] players;
+    private final Player[] players;
 
 
     public Team(String name, Player[] players) {
@@ -33,12 +33,12 @@ public class Team implements ISportsman {
 
 
     public String getResult() {
-        String total = "";
+        StringBuilder total = new StringBuilder();
         for (Player player : players) {
             String result = player.getResult();
-            total += (result + "\n");
+            total.append(result).append("\n");
         }
 
-        return total;
+        return total.toString();
     }
 }

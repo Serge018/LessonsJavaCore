@@ -1,6 +1,6 @@
 package Lesson_01;
 
 interface ISportsman {
-    public float run(int distance);
-    public String getResult();
+    float run(int distance);
+    String getResult();
 }
