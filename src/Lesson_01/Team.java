@@ -1,9 +1,9 @@
 package Lesson_01;
 
 
-public class Team implements ISportsman {
+public class Team {
     String name;
-    private final Player[] players;
+    private final ISportsman[] players;
 
 
     public Team(String name, Player[] players) {
@@ -20,7 +20,7 @@ public class Team implements ISportsman {
 
     public float run(int distance) {
         float maxTimeOfPlayers = 0.0F;
-        for (Player player : players) {
+        for (ISportsman player : players) {
             float time = player.run(distance);
             if (time > maxTimeOfPlayers)
             {
@@ -34,7 +34,7 @@ public class Team implements ISportsman {
 
     public String getResult() {
         StringBuilder total = new StringBuilder();
-        for (Player player : players) {
+        for (ISportsman player : players) {
             String result = player.getResult();
             total.append(result).append("\n");
         }
