@@ -27,9 +27,15 @@ public class Main {
 
         // Задание 2
         Box<Apple> appleBox = new Box<>(createApples(5));
+        Box<Apple> anotherAppleBox = new Box<>(createApples(0));
         Box<Orange> orangeBox = new Box<>(createOrange(10));
 
+        // appleBox.transferTo(anotherAppleBox);
+        appleBox.compare(anotherAppleBox);
 
+        // appleBox.compare(orangeBox);
+        // orangeBox.compare(appleBox);
+        // appleBox.transferTo(orangeBox); // генерирует ошибку компеляции
     }
 
 

@@ -45,4 +45,12 @@ public class Box<T extends Fruit> {
             System.out.println("Коробки по весу равны.");
         }
     }
+
+    /*
+    * Перемещает все фрукты в другую коробку
+    */
+    public void transferTo(Box<T> anotherBox) {
+        anotherBox.fruits.addAll(fruits);
+        fruits.clear();
+    }
 }
