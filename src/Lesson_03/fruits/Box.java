@@ -28,4 +28,21 @@ public class Box<T extends Fruit> {
     public void append(T fruit) {
         fruits.add(fruit);
     }
+
+    /*
+    * Сравнивает вес коробок
+    */
+    public void compare(Box<?> another) {
+
+        float incomingFruitsWeight = another.getWeight();
+        float currentFruitsWeight = getWeight();
+
+        if (currentFruitsWeight > incomingFruitsWeight) {
+            System.out.println("Текущая коробка тяжелее.");
+        } else if (currentFruitsWeight < incomingFruitsWeight) {
+            System.out.println("Преданная коробка тяжелее.");
+        } else {
+            System.out.println("Коробки по весу равны.");
+        }
+    }
 }
