@@ -1,6 +1,11 @@
 package Lesson_03;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+
+import Lesson_03.fruits.Pineapple;
+import Lesson_03.fruits.Apple;
+import Lesson_03.fruits.Box;
 
 public class Main {
 
@@ -19,6 +24,37 @@ public class Main {
                 "secondIndex : " + secondIndex + "\n" +
                 "arrayLength : " + array.length);
         }
+
+        // Задание 2
+        Box<Apple> appleBox = new Box<>(createApples(5));
+        Box<Pineapple> pineappleBox = new Box<>(createPineapple(10));
+    }
+
+
+    /*
+    * Возвращает набор яблок
+    */
+    private static ArrayList<Apple> createApples(int count) {
+        ArrayList<Apple> fruits = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            fruits.add(new Apple());
+        }
+
+        return fruits;
+    }
+
+
+    /*
+    * Возвращает набор ананасов
+    */
+    private static ArrayList<Pineapple> createPineapple(int count) {
+        ArrayList<Pineapple> fruits = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            fruits.add(new Pineapple());
+        }
+        return fruits;
     }
 
 
