@@ -3,7 +3,7 @@ package Lesson_03;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import Lesson_03.fruits.Pineapple;
+import Lesson_03.fruits.Orange;
 import Lesson_03.fruits.Apple;
 import Lesson_03.fruits.Box;
 
@@ -13,7 +13,7 @@ public class Main {
         // Задание 1
         String[] array = { "str1", "str2", "str3" };
         int firstIndex = 0;
-        int secondIndex = 4;
+        int secondIndex = 1;
 
         try {
             changeArrayElements(array, firstIndex, secondIndex);
@@ -27,7 +27,9 @@ public class Main {
 
         // Задание 2
         Box<Apple> appleBox = new Box<>(createApples(5));
-        Box<Pineapple> pineappleBox = new Box<>(createPineapple(10));
+        Box<Orange> orangeBox = new Box<>(createOrange(10));
+
+
     }
 
 
@@ -48,11 +50,11 @@ public class Main {
     /*
     * Возвращает набор ананасов
     */
-    private static ArrayList<Pineapple> createPineapple(int count) {
-        ArrayList<Pineapple> fruits = new ArrayList<>();
+    private static ArrayList<Orange> createOrange(int count) {
+        ArrayList<Orange> fruits = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
-            fruits.add(new Pineapple());
+            fruits.add(new Orange());
         }
         return fruits;
     }
