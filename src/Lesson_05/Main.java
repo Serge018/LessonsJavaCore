@@ -7,11 +7,14 @@ public class Main {
     public static void main(String[] args) {
         // Сохранение данных в файл table.csv
 
+        AppData data = newData();
+        System.out.println(data);
     }
 
     public static AppData newData() {
         AppData appData = new AppData();
         appData.init(headers);
+
         return appData;
     }
 }
