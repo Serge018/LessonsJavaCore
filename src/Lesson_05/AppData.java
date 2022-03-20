@@ -6,7 +6,6 @@ import java.util.Random;
 public class AppData {
     private String[] headers;
     private int[][] table;
-    private Random random = new Random();
 
 
     /*
@@ -15,6 +14,7 @@ public class AppData {
     public void init(String[] headers) {
         this.headers = headers;
         table = new int[headers.length][headers.length];
+        Random random = new Random();
 
         for (int row = 0; row < headers.length; row++) {
             for (int column = 0; column < headers.length; column++) {

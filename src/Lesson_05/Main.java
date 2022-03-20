@@ -48,9 +48,15 @@ public class Main {
     public static void printFileContent() {
         try (FileInputStream fileInputStream = new FileInputStream(FILE_NAME)) {
             byte[] data = new byte[fileInputStream.available()];
-            fileInputStream.read(data);
-            String table = new String(data);
-            System.out.println(table);
+            int result = fileInputStream.read(data);
+
+            if (result == -1) {
+                System.out.println("Не удалось прочитать танные из потока.");
+            } else {
+                String table = new String(data);
+                System.out.println(table);
+            }
+
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
