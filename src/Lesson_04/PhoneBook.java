@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class PhoneBook {
     /*
     * key - номер телефона
-    * value - имя пользователя
+    * value - имя абонента
     */
     private final HashMap<String, String> catalog;
 
