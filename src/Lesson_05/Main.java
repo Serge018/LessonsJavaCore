@@ -10,23 +10,31 @@ public class Main {
 
     public static void main(String[] args) {
         // Задание №1. Сохранение данных в файл table.csv
-        try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
-            // Генерируем таблицу с данными
-            String appData = newData().toString();
-            byte[] csvData = appData.getBytes(StandardCharsets.UTF_8);
+        AppData appData = newData();
+        save(appData);
 
-            // Записываем данные таблицы в файл table.csv
-            fileOutputStream.write(csvData);
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-
+        // Задание №2.
     }
+
 
     public static AppData newData() {
         AppData appData = new AppData();
         appData.init(headers);
 
         return appData;
+    }
+
+
+    /*
+    * Сохраняет данные таблицы в файл table.csv
+    */
+    public static void save(AppData appData) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+            String text = appData.toString();
+            byte[] data = text.getBytes(StandardCharsets.UTF_8);
+            fileOutputStream.write(data);
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 }
