@@ -51,7 +51,7 @@ public class Main {
             int result = fileInputStream.read(data);
 
             if (result == -1) {
-                System.out.println("Не удалось прочитать танные из потока.");
+                System.out.println("Не удалось прочитать данные из потока.");
             } else {
                 String table = new String(data);
                 System.out.println(table);
