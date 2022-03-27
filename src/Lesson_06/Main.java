@@ -28,9 +28,10 @@ public class Main {
             // Осуществляем запрос
             HttpURLConnection urlConnection = (HttpURLConnection) weatherUrl.openConnection();
             urlConnection.setRequestProperty(header_yandex_api_key, header_yandex_api_value);
+            int responseCode = urlConnection.getResponseCode();
 
-            System.out.println("response code: " + urlConnection.getResponseCode());
-            if (urlConnection.getResponseCode() == 200) {
+            System.out.println("response code: " + responseCode);
+            if (responseCode == 200) {
                 // производим чтение
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
                     StringBuilder data = getResponseData(reader);
