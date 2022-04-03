@@ -4,14 +4,13 @@ package Lesson_07;
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
-import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.io.StringReader;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
 
 
 public class Main {
@@ -27,6 +26,19 @@ public class Main {
 
 
     public static void main(String[] args) {
+        String data = load5DayForecastOrNull();
+
+        if (data != null) {
+            StringReader forecastJsonReader = new StringReader(data);
+            JsonReader jsonReader = Json.createReader(forecastJsonReader);
+            JsonObject weatherResponseJson = jsonReader.readObject();
+
+            WeatherResponse weatherResponse = new WeatherResponse(weatherResponseJson);
+            weatherResponse.printCurrentWeather();
+
+        } else {
+            System.out.println("Не удалось прочитать данные с сервера.");
+        }
 
     }
 
@@ -43,12 +55,10 @@ public class Main {
             urlConnection.setRequestProperty(header_yandex_api_key, header_yandex_api_value);
             int responseCode = urlConnection.getResponseCode();
 
-            System.out.println("response code: " + responseCode);
             if (responseCode == 200) {
                 // производим чтение
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
                     StringBuilder data = getResponseData(reader);
-                    System.out.println(data);
 
                     return data.toString();
                 } catch (IOException exception) {
