@@ -36,6 +36,7 @@ public class Main {
             WeatherResponse weatherResponse = new WeatherResponse(cityName, weatherResponseJson);
             weatherResponse.printCurrentWeather();
 
+            System.out.println(weatherResponse);
         } else {
             System.out.println("Не удалось прочитать данные с сервера.");
         }
