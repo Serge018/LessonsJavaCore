@@ -23,7 +23,7 @@ public class Main {
     private final static String limit = "limit=5";
     private final static String header_yandex_api_key = "X-Yandex-API-Key";
     private final static String header_yandex_api_value = "919cf666-abe6-4a32-b6d5-87ffdc78cf8f";
-
+    private final static String cityName = "Санкт-Петербург";
 
     public static void main(String[] args) {
         String data = load5DayForecastOrNull();
@@ -33,7 +33,7 @@ public class Main {
             JsonReader jsonReader = Json.createReader(forecastJsonReader);
             JsonObject weatherResponseJson = jsonReader.readObject();
 
-            WeatherResponse weatherResponse = new WeatherResponse(weatherResponseJson);
+            WeatherResponse weatherResponse = new WeatherResponse(cityName, weatherResponseJson);
             weatherResponse.printCurrentWeather();
 
         } else {
