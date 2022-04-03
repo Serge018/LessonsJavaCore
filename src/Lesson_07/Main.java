@@ -1,5 +1,10 @@
 package Lesson_07;
 
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.StringReader;
 import java.net.MalformedURLException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -22,6 +27,14 @@ public class Main {
 
 
     public static void main(String[] args) {
+
+    }
+
+
+    /*
+    * Возвращает данные о погоде за 5 дней
+    */
+    public static String load5DayForecastOrNull() {
         try {
             // Получаем объект URL
             URL weatherUrl = getUrl();
@@ -36,6 +49,8 @@ public class Main {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()))) {
                     StringBuilder data = getResponseData(reader);
                     System.out.println(data);
+
+                    return data.toString();
                 } catch (IOException exception) {
                     System.out.println("Ошибка при попытке прочесть данные ответа!\n" + exception.getMessage());
                 }
@@ -45,6 +60,8 @@ public class Main {
         } catch (IOException exception) {
             System.out.println("Ошибка при получении кода ответа!\n" + exception.getMessage());
         }
+
+        return null;
     }
 
 
