@@ -8,6 +8,7 @@ package Lessons_09;
 */
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -24,13 +25,14 @@ public class Main {
         Course photoShop = new Course("PhotoShop");
         Course linux = new Course("Linux");
 
+        // Студенты
         List<Student> students = new ArrayList<>(Arrays.asList(
             new Student("Vasya", new ArrayList<>(Arrays.asList(java, git, dataBase))),
             new Student("Fedya", new ArrayList<>(Arrays.asList(javaScript, html, css, photoShop))),
             new Student("Sergey", new ArrayList<>(Arrays.asList(javaScript, html, css, java, git, dataBase, linux, react))),
             new Student("Alina", new ArrayList<>(Arrays.asList(java, git, dataBase, linux, html))),
             new Student("Katya", new ArrayList<>(Arrays.asList(java, git, dataBase, linux, html, css, javaScript))),
-            new Student("Islam", new ArrayList<>(Arrays.asList(java, git, dataBase, linux, html))),
+            new Student("Islam", new ArrayList<>(Arrays.asList(java, git))),
             new Student("Michael", new ArrayList<>(Arrays.asList(java, git, linux, html)))
         ));
 
@@ -38,7 +40,9 @@ public class Main {
         Set<Course> uniqueStudentsCourses = getUniqueStudentsCourses(students);
         System.out.println(uniqueStudentsCourses);
 
-
+        // Определяем первых трёх самых любознательных студентов
+        List<Student> mostCuriosStudents =  getMostCuriosStudents(students, 3);
+        System.out.println(mostCuriosStudents);
     }
 
 
@@ -59,9 +63,21 @@ public class Main {
     /*
      * Возвращает список указанной длинны из самых любознательных студентов
      */
-//    public static List<Student> getCuriosStudents(List<Student> students, int CuriosStudentListLimit) {
-//
-//    }
+    public static List<Student> getMostCuriosStudents(List<Student> students, int curiosStudentListLimit) throws IllegalArgumentException {
+        // Сортируем студентов по любознательности исходя из количества курсов. От большего к меньшему
+        List<Student> result = students.stream()
+            .sorted((student1, student2) -> {
+                int student1CoursesQuantity = student1.getQuantityCourses();
+                int student2CoursesQuantity = student2.getQuantityCourses();
+
+                return student2CoursesQuantity - student1CoursesQuantity;
+            })
+            // Ограничиваем длинну списка до указанной длинны
+            .limit(curiosStudentListLimit)
+            .collect(Collectors.toList());
+
+        return result;
+    }
 
 
     /*

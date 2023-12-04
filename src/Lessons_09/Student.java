@@ -11,11 +11,24 @@ public class Student {
         this.courses = courses;
     }
 
+
     String getName() {
         return this.name;
     }
 
+
     List<Course> getAllCourses() {
         return this.courses;
+    }
+
+
+    int getQuantityCourses() {
+        return this.courses.size();
+    }
+
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
