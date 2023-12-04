@@ -27,6 +27,12 @@ public class Student {
     }
 
 
+    boolean isSubscribeToCourse(Course course)
+    {
+        return this.courses.contains(course);
+    }
+
+
     @Override
     public String toString() {
         return this.name;

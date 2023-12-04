@@ -22,13 +22,13 @@ public class Main {
         Course react = new Course("React");
         Course html = new Course("HTML");
         Course css = new Course("CSS");
-        Course photoShop = new Course("PhotoShop");
+        Course photoshop = new Course("PhotoShop");
         Course linux = new Course("Linux");
 
         // Студенты
         List<Student> students = new ArrayList<>(Arrays.asList(
             new Student("Vasya", new ArrayList<>(Arrays.asList(java, git, dataBase))),
-            new Student("Fedya", new ArrayList<>(Arrays.asList(javaScript, html, css, photoShop))),
+            new Student("Fedya", new ArrayList<>(Arrays.asList(javaScript, html, css, photoshop))),
             new Student("Sergey", new ArrayList<>(Arrays.asList(javaScript, html, css, java, git, dataBase, linux, react))),
             new Student("Alina", new ArrayList<>(Arrays.asList(java, git, dataBase, linux, html))),
             new Student("Katya", new ArrayList<>(Arrays.asList(java, git, dataBase, linux, html, css, javaScript))),
@@ -43,6 +43,14 @@ public class Main {
         // Определяем первых трёх самых любознательных студентов
         List<Student> mostCuriosStudents =  getMostCuriosStudents(students, 3);
         System.out.println(mostCuriosStudents);
+
+        // Определяем какие студенты посещают курс css
+        List<Student> subscribersCourseCss = getCourseSubscribers(students, css);
+        System.out.println(subscribersCourseCss);
+
+        // Определяем какие студенты посещают курс photoshop
+        List<Student> subscribersCoursePhotoshop = getCourseSubscribers(students, photoshop);
+        System.out.println(subscribersCoursePhotoshop);
     }
 
 
@@ -83,7 +91,11 @@ public class Main {
     /*
      * Возвращает список студентов, которые посещают указанный курс
      */
-//    public static List<Student> getCourseSubscribers {
-//
-//    }
+    public static List<Student> getCourseSubscribers(List<Student> students, Course course) {
+        List<Student> result = students.stream()
+            .filter((student) -> student.isSubscribeToCourse(course))
+            .collect(Collectors.toList());
+
+        return result;
+    }
 }
